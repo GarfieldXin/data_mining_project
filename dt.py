@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2018/1/3 14:02
-# @Author  : wangzy
-
 import numpy as np
+from pandas import Series, DataFrame
 import pandas as pd
-
+from sklearn.datasets import load_iris
 from math import log
 
 
@@ -30,7 +27,13 @@ class Node:
         return self.tree[features[self.feature]].predict(features)
 
 
-# 书上题目5.1
+def read_data():
+    datasets = pd.read_table('Iris_Data_Set/iris.data', sep=',', header=None)
+    # datasets = pd.read_table('Iris_Data_Set/iris.data', header=None)
+    labels = ['sepal length', 'sepal width', 'petal length', 'petal width', 'label']
+    return datasets, labels
+
+
 def create_data():
     datasets = [['青年', '否', '否', '一般', '否'],
                ['青年', '否', '否', '好', '否'],
@@ -145,9 +148,27 @@ class DTree:
 
 
 if __name__ == '__main__':
-    datasets, labels = create_data()
-    data_df = pd.DataFrame(datasets, columns=labels)
+    # data_sets, labels_iris = read_data()
+    # print(data_sets)
+    # print(labels_iris)
+    # data_df_iris = pd.DataFrame(data_sets, columns=labels_iris)
+    # print(data_df_iris)
+
+    iris = load_iris()
+    print(iris.data)
+    print(iris.feature_names)
+    df = pd.DataFrame(iris.data, columns=iris.feature_names)
+    print(df)
     dt = DTree()
-    tree = dt.fit(data_df)
-    print(dt.predict(['老年', '否', '否', '一般']))
+    tree = dt.fit(df)
+    print(tree)
+    # datasets, labels = create_data()
+    # print(datasets)
+    # print(labels)
+    # data_df = pd.DataFrame(datasets, columns=labels)
+    # print(data_df)
+    # dt = DTree()
+    # tree = dt.fit(data_df)
+    # print(tree)
+    # print(dt.predict(['老年', '否', '否', '一般']))
 
