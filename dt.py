@@ -153,15 +153,35 @@ if __name__ == '__main__':
     # print(labels_iris)
     # data_df_iris = pd.DataFrame(data_sets, columns=labels_iris)
     # print(data_df_iris)
-
-    iris = load_iris()
-    print(iris.data)
-    print(iris.feature_names)
-    df = pd.DataFrame(iris.data, columns=iris.feature_names)
+    data_sets = []
+    with open('Iris_Data_Set/iris.data', 'r') as file:
+        data = file.readlines()
+        for line in data:
+            line_obj = line.split(',')
+            line_array = []
+            for obj in line_obj:
+                # print(obj)
+                line_array.append(obj)
+            data_sets.append(line_array)
+        print(data_sets)
+    labels = ['sepal length', 'sepal width', 'petal length', 'petal width', 'label']
+    df = pd.DataFrame(data_sets, columns=labels)
     print(df)
     dt = DTree()
     tree = dt.fit(df)
     print(tree)
+    r1 = dt.predict(['5.1','3.5','1.4','0.2'])
+    r2 = dt.predict(['7.0','3.2','4.7','1.4'])
+    print(r1)
+    print(r2)
+    # iris = load_iris()
+    # print(iris.data)
+    # print(iris.feature_names)
+    # df = pd.DataFrame(iris.data, columns=iris.feature_names)
+    # print(df)
+    # dt = DTree()
+    # tree = dt.fit(df)
+    # print(tree)
     # datasets, labels = create_data()
     # print(datasets)
     # print(labels)
