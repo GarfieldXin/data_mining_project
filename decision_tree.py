@@ -19,12 +19,12 @@ class Node:
         self.tree[val] = node
 
     def predict(self, features):
-        # try:
+        try:
             if self.root is True:
                 return self.label
             return self.tree[features[self.feature]].predict(features)
-        # except:
-        #     return "Fail"
+        except:
+            return "Other"
 
 
 class DecisionTree:
@@ -135,7 +135,7 @@ def handle_irs_data(data, labels):
     test_data = []
     train_data = []
     for i in range(len(data)):
-        if i % 10 == 0:
+        if i % 5 == 0:
             test_data.append(data[i])
         else:
             train_data.append(data[i])
@@ -177,6 +177,8 @@ def main_function():
     tree = dt.fit(iris_data_train_df)
     print(tree)
     print(iris_data_test_df)
+    r1 = dt.predict(["7.0", "3.2", "4.7", "1.4"])
+    print(r1)
     iris_test_result_df = predict_data(dt, iris_data_test_df, iris_labels)
     print(iris_test_result_df)
     # print(iris_data_test_df)

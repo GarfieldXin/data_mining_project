@@ -1,0 +1,50 @@
+{'label:': None, 'feature': 3, 'tree': 
+    {'0.2': {'label:': 'Iris-setosa\n', 'feature': None, 'tree': {}}, 
+     '1.3': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}}, 
+     '1.5': {'label:': None, 'feature': 2, 'tree': {'4.5': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '4.9': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '4.6': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '5.0': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}
+                }, '4.2': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '5.1': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}
+                }, '4.7': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }
+            }
+        }, 
+    '1.8': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '1.0': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}}, 
+    '0.3': {'label:': 'Iris-setosa\n', 'feature': None, 'tree': {}}, 
+    '2.1': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '1.4': {'label:': None, 'feature': 1, 'tree': {'3.0': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '2.9': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '2.7': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '2.8': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '2.6': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}
+                }
+            }
+        }, 
+    '2.0': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '0.4': {'label:': 'Iris-setosa\n', 'feature': None, 'tree': {}}, 
+    '2.3': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '0.1': {'label:': 'Iris-setosa\n', 'feature': None, 'tree': {}}, 
+    '1.9': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '1.2': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}}, 
+    '1.6': {'label:': None, 'feature': 0, 'tree': {'6.0': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '6.3': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }, '7.2': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}
+                }
+            }
+        }, 
+    '2.2': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '1.7': {'label:': None, 'feature': 0, 'tree': {'4.9': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}
+                }, '6.7': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}
+                }
+            }
+        }, 
+    '2.4': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '1.1': {'label:': 'Iris-versicolor\n', 'feature': None, 'tree': {}}, 
+    '2.5': {'label:': 'Iris-virginica\n', 'feature': None, 'tree': {}}, 
+    '0.6': {'label:': 'Iris-setosa\n', 'feature': None, 'tree': {}}, 
+    '0.5': {'label:': 'Iris-setosa\n', 'feature': None, 'tree': {}}
+    }
+}
