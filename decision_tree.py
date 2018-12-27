@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from math import log
+import data_sets_utils as utils
 
 
 class Node:
@@ -34,15 +35,15 @@ class DecisionTree:
 
     def fit(self, train_data):
         _, y_train, features = train_data.iloc[:, :-1], train_data.iloc[:, -1], train_data.columns[:-1]
-        print(_)
-        print("-------------")
-        print(y_train)
-        print("-------------")
-        print(train_data.columns)
-        print(train_data.columns[-3:-1])
-        print(features)
-        print("y_train.iloc[0]:")
-        print(y_train.iloc[0])
+        # print(_)
+        # print("-------------")
+        # print(y_train)
+        # print("-------------")
+        # print(train_data.columns)
+        # print(train_data.columns[-3:-1])
+        # print(features)
+        # print("y_train.iloc[0]:")
+        # print(y_train.iloc[0])
         self._tree = self.train(train_data)
         return self._tree
 
@@ -116,45 +117,6 @@ class DecisionTree:
         return cond_ent
 
 
-def get_data_set():
-    iris_data_sets = []
-    with open('Iris_Data_Set/iris.data', 'r') as file:
-        data = file.readlines()
-        for line in data:
-            line_obj = line.split(',')
-            line_array = []
-            for obj in line_obj:
-                line_array.append(obj)
-            iris_data_sets.append(line_array)
-        # print(iris_data_sets)
-    labels = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'label']
-    return iris_data_sets, labels
-
-
-def handle_irs_data(data, labels):
-    test_data = []
-    train_data = []
-    for i in range(len(data)):
-        if i % 5 == 0:
-            test_data.append(data[i])
-        else:
-            train_data.append(data[i])
-    print(test_data)
-    print(train_data)
-    test_data_df = pd.DataFrame(test_data, columns=labels)
-    train_data_df = pd.DataFrame(train_data, columns=labels)
-    # Clean Data Frame
-    train_data_df = train_data_df.drop_duplicates()
-    test_data_df = test_data_df.drop_duplicates()
-    # a_n = train_data_df.isnull()
-    # b_n = test_data_df.isnull()
-    # print(a_n)
-    # print(b_n)
-    train_data_df = train_data_df.dropna()
-    test_data_df = test_data_df.dropna()
-    return test_data_df, train_data_df
-
-
 def predict_data(dt, iris_data_test_df, iris_labels):
     features_data_array = np.array(iris_data_test_df.iloc[:, :-1])
     # print(features_data_array)
@@ -171,17 +133,16 @@ def predict_data(dt, iris_data_test_df, iris_labels):
 
 
 def main_function():
-    iris_data_sets, iris_labels = get_data_set()
-    iris_data_test_df, iris_data_train_df = handle_irs_data(iris_data_sets, iris_labels)
+    iris_data_sets, iris_labels = utils.get_iris_data_set()
+    iris_data_test_df, iris_data_train_df = utils.handle_irs_data(iris_data_sets, iris_labels)
     dt = DecisionTree()
     tree = dt.fit(iris_data_train_df)
     print(tree)
     print(iris_data_test_df)
-    r1 = dt.predict(["7.0", "3.2", "4.7", "1.4"])
-    print(r1)
+    # r1 = dt.predict(["7.0", "3.2", "4.7", "1.4"])
+    # print(r1)
     iris_test_result_df = predict_data(dt, iris_data_test_df, iris_labels)
     print(iris_test_result_df)
-    # print(iris_data_test_df)
 
 
 if __name__ == '__main__':
