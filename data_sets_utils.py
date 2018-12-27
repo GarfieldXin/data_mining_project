@@ -39,18 +39,24 @@ def handle_data(data, labels):
     # Clean Data Frame
     a_d = train_data_df.duplicated()
     b_d = test_data_df.duplicated()
-    # print("The Duplicated items in Train Sets size: " + str(len(a_d)))
-    # print("The Duplicated items in Test Sets size: " + str(len(b_d)))
-    a_n = train_data_df.isnull()
-    b_n = test_data_df.isnull()
-    # print("The Null items in Test Sets size: " + str(len(a_n)))
-    # print("The Null items in Train Sets size: " + str(len(b_n)))
     train_data_df = train_data_df.drop_duplicates()
     test_data_df = test_data_df.drop_duplicates()
+    print("The Duplicated items in Train Sets size: " + str(len(a_d) - len(train_data_df)))
+    print("The Duplicated items in Test Sets size: " + str(len(b_d) - len(test_data_df)))
+    a_n = train_data_df.isnull()
+    b_n = test_data_df.isnull()
     train_data_df = train_data_df.dropna()
     test_data_df = test_data_df.dropna()
+    print("The Null items in Train Sets size: " + str(len(a_n) - len(train_data_df)))
+    print("The Null items in Test Sets size: " + str(len(b_n) - len(test_data_df)))
     print("Clean Done. The Train Data Sets size: " + str(len(train_data_df)))
     print("Clean Done. The Test Data Sets size: " + str(len(test_data_df)))
+    # train_data_df = train_data_df.drop(['used_app_before', 'contry_of_res', 'austim', 'jundice',
+    #                                     'ethnicity', 'gender', 'age', 'A10_Score'], axis=1)
+    # test_data_df = test_data_df.drop(['used_app_before', 'contry_of_res', 'austim', 'jundice',
+    #                                     'ethnicity', 'gender', 'age', 'A10_Score'], axis=1)
+    # train_data_df = train_data_df.drop(['A10_Score', 'A9_Score', 'A8_Score', 'A7_Score'], axis=1)
+    # test_data_df = test_data_df.drop(['A10_Score', 'A9_Score', 'A8_Score', 'A7_Score'], axis=1)
     return test_data_df, train_data_df
 
 
@@ -93,6 +99,39 @@ def get_healthy_data_set():
     return healthy_data_set, sets_headers
 
 
+def get_autism_data_set():
+    path = "Autism-Adult-Data Plus Description File/Autism-Adult-Data.arff"
+    autism_data_set_lines = []
+    autism_data_set = []
+    autism_data_attr = []
+    with open(path, 'r') as file:
+        lines = file.readlines()
+        for i in range(len(lines)):
+            # print(len(lines))
+            if lines[i].find("@attribute") == 0:
+                att_name = lines[i].split(" ")[1]
+                autism_data_attr.append(att_name)
+            elif lines[i].find("@data") == 0:
+                autism_data_set_lines = lines[i+1:len(lines)]
+                break
+
+    for line in autism_data_set_lines:
+        line_obj = line.split(',')
+        line_array = []
+        for obj in line_obj:
+            obj = obj.replace("\n", "")
+            if obj == "?":
+                obj = None
+            line_array.append(obj)
+        autism_data_set.append(line_array)
+    # print(len(autism_data_set))
+    # print(autism_data_set)
+    return autism_data_set, autism_data_attr
+
+
+
+
+
 def generate_report(true_df, pred_df, target_names):
     y_true = np.array(true_df.iloc[:, -1])
     y_pred = np.array(pred_df.iloc[:, -1])
@@ -103,12 +142,8 @@ def generate_report(true_df, pred_df, target_names):
 
 
 # if __name__ == '__main__':
-#     sets, labels = get_healthy_data_set()
-#     test_df, train_df = handle_irs_data(sets, labels)
-#     # df = pd.DataFrame(sets, columns=labels)
-#     print(len(train_df))
-#     print(len(test_df))
-    # print(test_df)
-    # print(train_df)
+    # sets, labels = get_healthy_data_set()
+    # df = pd.DataFrame(sets, columns=labels)
+    # get_autism_data_set()
 
 

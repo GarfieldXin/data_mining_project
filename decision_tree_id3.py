@@ -162,20 +162,37 @@ def healthy_sets_process():
     healthy_data_test_df, healthy_data_train_df = utils.handle_data(healthy_data_sets, healthy_labels)
     target_names = np.unique(healthy_data_train_df.iloc[:, -1])
     # print(target_names)
-    dt_1 = DecisionTree()
+    dt = DecisionTree()
     fit_begin_time = datetime.datetime.now()
     print("Begin Time: " + str(fit_begin_time))
-    tree_1 = dt_1.fit(healthy_data_train_df)
+    tree = dt.fit(healthy_data_train_df)
     fit_end_time = datetime.datetime.now()
     print("End Time: " + str(fit_end_time))
     print("Training used Time: " + str(fit_end_time - fit_begin_time))
-    healthy_test_result_df = predict_data(dt_1, healthy_data_test_df, healthy_labels)
+    healthy_test_result_df = predict_data(dt, healthy_data_test_df, healthy_labels)
     report = utils.generate_report(healthy_data_test_df, healthy_test_result_df, target_names)
     print(report)
 
 
 def autism_sets_process():
-    pass
+    print("---------------------Autism Adult Data Sets------------------------")
+    autism_data_sets, autism_labels = utils.get_autism_data_set()
+    autism_data_test_df, autism_data_train_df = utils.handle_data(autism_data_sets, autism_labels)
+    autism_labels = np.array(autism_data_train_df.columns)
+    # print(autism_labels)
+    target_names = np.unique(autism_data_train_df.iloc[:, -1])
+    # print(target_names)
+    dt = DecisionTree()
+    fit_begin_time = datetime.datetime.now()
+    print("Begin Time: " + str(fit_begin_time))
+    tree = dt.fit(autism_data_train_df)
+    # print(tree)
+    fit_end_time = datetime.datetime.now()
+    print("End Time: " + str(fit_end_time))
+    print("Training used Time: " + str(fit_end_time - fit_begin_time))
+    autism_test_result_df = predict_data(dt, autism_data_test_df, autism_labels)
+    report = utils.generate_report(autism_data_test_df, autism_test_result_df, target_names)
+    print(report)
 
 
 if __name__ == '__main__':
