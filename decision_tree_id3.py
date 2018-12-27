@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from math import log
 import data_sets_utils as utils
+import datetime
 
 
 class Node:
@@ -36,7 +37,7 @@ class DecisionTree:
     def fit(self, train_data):
         _, y_train, features = train_data.iloc[:, :-1], train_data.iloc[:, -1], train_data.columns[:-1]
         # print(_)
-        # print("-------------")
+        # print("train_data.iloc[:, -1]:")
         # print(y_train)
         # print("-------------")
         # print(train_data.columns)
@@ -127,23 +128,57 @@ def predict_data(dt, iris_data_test_df, iris_labels):
         predict_label = dt.predict(data)
         data = np.append(data, predict_label)
         predict_result.append(data)
-    print(predict_result)
+    # print(predict_result)
     predict_result_df = pd.DataFrame(predict_result, columns=iris_labels)
     return predict_result_df
 
 
-def main_function():
+def iris_sets_process():
+    print("---------------------Iris Data Sets------------------------")
     iris_data_sets, iris_labels = utils.get_iris_data_set()
-    iris_data_test_df, iris_data_train_df = utils.handle_irs_data(iris_data_sets, iris_labels)
+    iris_data_test_df, iris_data_train_df = utils.handle_data(iris_data_sets, iris_labels)
+    target_names = np.unique(iris_data_train_df.iloc[:, -1])
+    # print(target_names)
     dt = DecisionTree()
+    fit_begin_time = datetime.datetime.now()
+    print("Begin Time: " + str(fit_begin_time))
     tree = dt.fit(iris_data_train_df)
-    print(tree)
-    print(iris_data_test_df)
+    fit_end_time = datetime.datetime.now()
+    print("End Time: " + str(fit_end_time))
+    print("Training used Time: " + str(fit_end_time - fit_begin_time))
+    # print(tree)
+    # print(iris_data_test_df)
     # r1 = dt.predict(["7.0", "3.2", "4.7", "1.4"])
     # print(r1)
     iris_test_result_df = predict_data(dt, iris_data_test_df, iris_labels)
-    print(iris_test_result_df)
+    # print(iris_test_result_df)
+    report = utils.generate_report(iris_data_test_df, iris_test_result_df, target_names)
+    print(report)
+
+
+def healthy_sets_process():
+    print("---------------------Healthy Older People Sets------------------------")
+    healthy_data_sets, healthy_labels = utils.get_healthy_data_set()
+    healthy_data_test_df, healthy_data_train_df = utils.handle_data(healthy_data_sets, healthy_labels)
+    target_names = np.unique(healthy_data_train_df.iloc[:, -1])
+    # print(target_names)
+    dt_1 = DecisionTree()
+    fit_begin_time = datetime.datetime.now()
+    print("Begin Time: " + str(fit_begin_time))
+    tree_1 = dt_1.fit(healthy_data_train_df)
+    fit_end_time = datetime.datetime.now()
+    print("End Time: " + str(fit_end_time))
+    print("Training used Time: " + str(fit_end_time - fit_begin_time))
+    healthy_test_result_df = predict_data(dt_1, healthy_data_test_df, healthy_labels)
+    report = utils.generate_report(healthy_data_test_df, healthy_test_result_df, target_names)
+    print(report)
+
+
+def autism_sets_process():
+    pass
 
 
 if __name__ == '__main__':
-    main_function()
+    iris_sets_process()
+    healthy_sets_process()
+    autism_sets_process()
