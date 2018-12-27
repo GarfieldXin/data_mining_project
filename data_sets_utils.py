@@ -24,6 +24,28 @@ def get_iris_data_set():
     return iris_data_sets, labels
 
 
+def get_iris_data_set_for_kd():
+    iris_data_sets = []
+    with open('Iris_Data_Set/iris.data', 'r') as file:
+        data = file.readlines()
+        for line in data:
+            line_obj = line.split(',')
+            line_array = []
+            for obj in line_obj:
+                obj = obj.replace("\n", "")
+                if obj == 'Iris-setosa':
+                    obj = 0
+                elif obj == 'Iris-versicolor':
+                    obj = 1
+                elif obj == 'Iris-virginica':
+                    obj = 2
+                line_array.append(float(obj))
+            iris_data_sets.append(line_array)
+        # print(iris_data_sets)
+    labels = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'label']
+    return iris_data_sets, labels
+
+
 def handle_data(data, labels):
     test_data = []
     train_data = []
@@ -55,8 +77,8 @@ def handle_data(data, labels):
     #                                     'ethnicity', 'gender', 'age', 'A10_Score'], axis=1)
     # test_data_df = test_data_df.drop(['used_app_before', 'contry_of_res', 'austim', 'jundice',
     #                                     'ethnicity', 'gender', 'age', 'A10_Score'], axis=1)
-    # train_data_df = train_data_df.drop(['A10_Score', 'A9_Score', 'A8_Score', 'A7_Score'], axis=1)
-    # test_data_df = test_data_df.drop(['A10_Score', 'A9_Score', 'A8_Score', 'A7_Score'], axis=1)
+    # train_data_df = train_data_df.drop(['age_desc'], axis=1)
+    # test_data_df = test_data_df.drop(['age_desc'], axis=1)
     return test_data_df, train_data_df
 
 
