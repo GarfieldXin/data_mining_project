@@ -1,0 +1,137 @@
+{'label:': None, 'feature': 2, 'true_branch': {'3.0': {'label:': None, 'feature': 3, 'true_branch': {'1.8': {'label:': None, 'feature': 2, 'true_branch': {'4.9': {'label:': 'Iris-virginica', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                        }
+                    }, 'false_branch': {'4.9': {'label:': None, 'feature': 0, 'true_branch': {'6.0': {'label:': 'Iris-virginica', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }, 'false_branch': {'6.0': {'label:': 'Iris-versicolor', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 'false_branch': {'1.8': {'label:': None, 'feature': 2, 'true_branch': {'5.0': {'label:': None, 'feature': 3, 'true_branch': {'1.6': {'label:': None, 'feature': 0, 'true_branch': {'7.2': {'label:': 'Iris-virginica', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }, 'false_branch': {'7.2': {'label:': 'Iris-versicolor', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }
+                                }
+                            }, 'false_branch': {'1.6': {'label:': 'Iris-virginica', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }, 'false_branch': {'5.0': {'label:': None, 'feature': 3, 'true_branch': {'1.7': {'label:': 'Iris-virginica', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }, 'false_branch': {'1.7': {'label:': 'Iris-versicolor', 'feature': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }, 'false_branch': {'3.0': {'label:': 'Iris-setosa', 'feature': None, 'true_branch': {}, 'false_branch': {}
+        }
+    }
+}
+
+
+
+
+{'label:': None, 'feature': 2, 'feature_value': '3.0', 'true_branch': {'3.0': {'label:': None, 'feature': 3, 'feature_value': '1.8', 'true_branch': {'1.8': {'label:': None, 'feature': 2, 'feature_value': '4.9', 'true_branch': {'4.9': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                        }
+                    }, 'false_branch': {'4.9': {'label:': None, 'feature': 0, 'feature_value': '6.0', 'true_branch': {'6.0': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }, 'false_branch': {'6.0': {'label:': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 'false_branch': {'1.8': {'label:': None, 'feature': 2, 'feature_value': '5.0', 'true_branch': {'5.0': {'label:': None, 'feature': 3, 'feature_value': '1.6', 'true_branch': {'1.6': {'label:': None, 'feature': 0, 'feature_value': '7.2', 'true_branch': {'7.2': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }, 'false_branch': {'7.2': {'label:': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }
+                                }
+                            }, 'false_branch': {'1.6': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }, 'false_branch': {'5.0': {'label:': None, 'feature': 3, 'feature_value': '1.7', 'true_branch': {'1.7': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }, 'false_branch': {'1.7': {'label:': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }, 'false_branch': {'3.0': {'label:': 'Iris-setosa', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+        }
+    }
+}
+
+
+{'label:': None, 'feature': 2, 'feature_value': '3.0', 'true_branch': {'true': {'label:': None, 'feature': 3, 'feature_value': '1.8', 'true_branch': {'true': {'label:': None, 'feature': 2, 'feature_value': '4.9', 'true_branch': {'true': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                        }
+                    }, 'false_branch': {'false': {'label:': None, 'feature': 0, 'feature_value': '6.0', 'true_branch': {'true': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }, 'false_branch': {'false': {'label:': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 'false_branch': {'false': {'label:': None, 'feature': 2, 'feature_value': '5.0', 'true_branch': {'true': {'label:': None, 'feature': 3, 'feature_value': '1.6', 'true_branch': {'true': {'label:': None, 'feature': 0, 'feature_value': '7.2', 'true_branch': {'true': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }, 'false_branch': {'false': {'label:': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }
+                                }
+                            }, 'false_branch': {'false': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }, 'false_branch': {'false': {'label:': None, 'feature': 3, 'feature_value': '1.7', 'true_branch': {'true': {'label:': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }, 'false_branch': {'false': {'label:': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }, 'false_branch': {'false': {'label:': 'Iris-setosa', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+        }
+    }
+}
+
+
+
+{'root': False, 'label': None, 'feature': 2, 'feature_value': '3.0', 'true_branch': {'true': {'root': False, 'label': None, 'feature': 3, 'feature_value': '1.8', 'true_branch': {'true': {'root': True, 'label': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                }
+            }, 'false_branch': {'false': {'root': False, 'label': None, 'feature': 2, 'feature_value': '5.0', 'true_branch': {'true': {'root': False, 'label': None, 'feature': 3, 'feature_value': '1.6', 'true_branch': {'true': {'root': False, 'label': None, 'feature': 0, 'feature_value': '7.2', 'true_branch': {'true': {'root': True, 'label': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }, 'false_branch': {'false': {'root': True, 'label': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                        }
+                                    }
+                                }
+                            }, 'false_branch': {'false': {'root': True, 'label': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }, 'false_branch': {'false': {'root': False, 'label': None, 'feature': 3, 'feature_value': '1.7', 'true_branch': {'true': {'root': True, 'label': 'Iris-virginica', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }, 'false_branch': {'false': {'root': True, 'label': 'Iris-versicolor', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }, 'false_branch': {'false': {'root': True, 'label': 'Iris-setosa', 'feature': None, 'feature_value': None, 'true_branch': {}, 'false_branch': {}
+        }
+    }
+}

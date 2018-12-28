@@ -1,3 +1,5 @@
+from time import clock
+
 import numpy as np
 import pandas as pd
 from math import log
@@ -15,7 +17,7 @@ class Node:
         # self.tree = {}
         self.true_branch = {}
         self.false_branch = {}
-        self.result = {'label:': self.label, 'feature': self.feature, 'feature_value': self.feature_value, 'true_branch': self.true_branch,
+        self.result = {'root': self.root, 'label': self.label, 'feature': self.feature, 'feature_value': self.feature_value, 'true_branch': self.true_branch,
                        'false_branch': self.false_branch}
 
     def __repr__(self):
@@ -43,6 +45,11 @@ class Node:
         except:
             return "Other"
 
+    def prune(self, min_gain, notify=False):
+        if not self.root:
+            self.true_branch['true'].prune(min_gain, notify)
+            self.false_branch['false'].prune(min_gain, notify)
+
 
 class DecisionTree:
     def __init__(self, epsilon=0.1):
@@ -65,6 +72,9 @@ class DecisionTree:
 
     def predict(self, test_data):
         return self._tree.predict(test_data)
+
+    def prune(self, min_gain, notify=False):
+        return self._tree.prune(min_gain, notify)
 
     def train(self, train_data):
         _, y_train, features = train_data.iloc[:, :-1], train_data.iloc[:, -1], train_data.columns[:-1]
@@ -133,15 +143,27 @@ class DecisionTree:
         return imp
 
     def divide_set(self, train_data, feature, value):
-        # TODO maybe not support for string
-        set1 = train_data.loc[train_data[feature] >= value]
-        set2 = train_data.loc[train_data[feature] < value]
-        # print(set1)
-        # print(set2)
+        if self.is_int_float(value):
+            set1 = train_data.loc[train_data[feature] >= value]
+            set2 = train_data.loc[train_data[feature] < value]
+        else:
+            set1 = train_data.loc[train_data[feature] == value]
+            set2 = train_data.loc[train_data[feature] != value]
+            # print(set1)
+            # print(set2)
         return set1, set2
 
-    def unique_counts(self, data):
+    @staticmethod
+    def unique_counts(data):
         return data.iloc[:, -1].value_counts()
+
+    @staticmethod
+    def is_int_float(value):
+        try:
+            complex(value)  # for int, long, float and complex
+        except ValueError:
+            return False
+        return True
 
 
 def predict_data(dt, iris_data_test_df, iris_labels):
@@ -170,13 +192,14 @@ def iris_sets_process():
     fit_begin_time = datetime.datetime.now()
     print("Begin Time: " + str(fit_begin_time))
     tree = dt.fit(iris_data_train_df)
+    # print(tree)
     fit_end_time = datetime.datetime.now()
     print("End Time: " + str(fit_end_time))
     print("Training used Time: " + str(fit_end_time - fit_begin_time))
     # r1 = dt.predict(["7.0", "3.2", "4.7", "1.4"])
     # print(r1)
     iris_test_result_df = predict_data(dt, iris_data_test_df, iris_labels)
-    print(iris_test_result_df)
+    # print(iris_test_result_df)
     report = utils.generate_report(iris_data_test_df, iris_test_result_df, target_names)
     print(report)
 
@@ -199,6 +222,29 @@ def healthy_sets_process():
     print(report)
 
 
+def autism_sets_process():
+    print("---------------------Autism Adult Data Sets------------------------")
+    autism_data_sets, autism_labels = utils.get_autism_data_set()
+    autism_data_test_df, autism_data_train_df = utils.handle_data(autism_data_sets, autism_labels)
+    autism_labels = np.array(autism_data_train_df.columns)
+    # print(autism_labels)
+    target_names = np.unique(autism_data_train_df.iloc[:, -1])
+    # print(target_names)
+    dt = DecisionTree()
+    fit_begin_time = datetime.datetime.now()
+    print("Begin Time: " + str(fit_begin_time))
+    tree = dt.fit(autism_data_train_df)
+    # print(tree)
+    # print(autism_data_test_df)
+    fit_end_time = datetime.datetime.now()
+    print("End Time: " + str(fit_end_time))
+    print("Training used Time: " + str(fit_end_time - fit_begin_time))
+    autism_test_result_df = predict_data(dt, autism_data_test_df, autism_labels)
+    report = utils.generate_report(autism_data_test_df, autism_test_result_df, target_names)
+    print(report)
+
+
 if __name__ == '__main__':
     iris_sets_process()
-    healthy_sets_process()
+    # healthy_sets_process()
+    autism_sets_process()
