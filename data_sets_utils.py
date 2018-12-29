@@ -1,6 +1,6 @@
-import pandas as pd
-import os
-import numpy as np
+from numpy import array
+from pandas import DataFrame
+from os import listdir
 from sklearn.metrics import classification_report
 import warnings
 warnings.filterwarnings('ignore')
@@ -24,29 +24,8 @@ def get_iris_data_set():
     return iris_data_sets, labels
 
 
-def get_iris_data_set_for_kd():
-    iris_data_sets = []
-    with open('Iris_Data_Set/iris.data', 'r') as file:
-        data = file.readlines()
-        for line in data:
-            line_obj = line.split(',')
-            line_array = []
-            for obj in line_obj:
-                obj = obj.replace("\n", "")
-                if obj == 'Iris-setosa':
-                    obj = 0
-                elif obj == 'Iris-versicolor':
-                    obj = 1
-                elif obj == 'Iris-virginica':
-                    obj = 2
-                line_array.append(float(obj))
-            iris_data_sets.append(line_array)
-        # print(iris_data_sets)
-    labels = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'label']
-    return iris_data_sets, labels
-
-
 def handle_data(data, labels):
+    print("All data sets size: " + str(len(data)))
     test_data = []
     train_data = []
     for i in range(len(data)):
@@ -56,8 +35,8 @@ def handle_data(data, labels):
             train_data.append(data[i])
     print("Train Sets size: " + str(len(train_data)))
     print("Test Sets size: " + str(len(test_data)))
-    test_data_df = pd.DataFrame(test_data, columns=labels)
-    train_data_df = pd.DataFrame(train_data, columns=labels)
+    test_data_df = DataFrame(test_data, columns=labels)
+    train_data_df = DataFrame(train_data, columns=labels)
     # Clean Data Frame
     a_d = train_data_df.duplicated()
     b_d = test_data_df.duplicated()
@@ -85,8 +64,8 @@ def handle_data(data, labels):
 def get_healthy_data_set():
     path_1 = "Datasets_Healthy_Older_People/S1_Dataset"
     path_2 = "Datasets_Healthy_Older_People/S2_Dataset"
-    files_in_path1 = os.listdir(path_1)
-    files_in_path2 = os.listdir(path_2)
+    files_in_path1 = listdir(path_1)
+    files_in_path2 = listdir(path_2)
     healthy_data_set = []
     for i in range(len(files_in_path1) - 1):
     # for i in range(int((len(files_in_path1) - 1)/2)):  # For Test
@@ -114,7 +93,7 @@ def get_healthy_data_set():
                     obj = obj.replace("\n", "")
                     line_array.append(obj)
                 healthy_data_set.append(line_array)
-    print(len(healthy_data_set))
+    # print(len(healthy_data_set))
     # print(healthy_data_set)
     sets_headers = ['gender', 'starting_time', 'frontal_g', 'vertical_g',
                     'lateral_g', 'antenna_id', 'RSSI', 'Phase', 'Frequency', 'activity_label']
@@ -152,8 +131,8 @@ def get_autism_data_set():
 
 
 def generate_report(true_df, pred_df, target_names):
-    y_true = np.array(true_df.iloc[:, -1])
-    y_pred = np.array(pred_df.iloc[:, -1])
+    y_true = array(true_df.iloc[:, -1])
+    y_pred = array(pred_df.iloc[:, -1])
     # print(y_true)
     # print(y_pred)
     report = classification_report(y_true, y_pred, target_names=target_names)
@@ -162,7 +141,7 @@ def generate_report(true_df, pred_df, target_names):
 
 # if __name__ == '__main__':
     # sets, labels = get_healthy_data_set()
-    # df = pd.DataFrame(sets, columns=labels)
+    # df = DataFrame(sets, columns=labels)
     # get_autism_data_set()
 
 

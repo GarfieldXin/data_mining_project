@@ -1,5 +1,5 @@
-import numpy as np
-import pandas as pd
+from numpy import array, unique, append
+from pandas import DataFrame
 from math import log
 import data_sets_utils as utils
 import datetime
@@ -60,7 +60,7 @@ class DecisionTree:
         if len(features) == 0:
             return Node(root=True, label=y_train.value_counts().sort_values(ascending=False).index[0])
         # Calculate the maximum information gain
-        max_feature, max_info_gain = self.info_gain_train(np.array(train_data))
+        max_feature, max_info_gain = self.info_gain_train(array(train_data))
         max_feature_name = features[max_feature]
 
         if max_info_gain < self.epsilon:
@@ -119,17 +119,17 @@ class DecisionTree:
 
 
 def predict_data(dt, iris_data_test_df, iris_labels):
-    features_data_array = np.array(iris_data_test_df.iloc[:, :-1])
+    features_data_array = array(iris_data_test_df.iloc[:, :-1])
     # print(features_data_array)
     predict_result = []
     for item in features_data_array:
         data = item[:]
         # print(data)
         predict_label = dt.predict(data)
-        data = np.append(data, predict_label)
+        data = append(data, predict_label)
         predict_result.append(data)
     # print(predict_result)
-    predict_result_df = pd.DataFrame(predict_result, columns=iris_labels)
+    predict_result_df = DataFrame(predict_result, columns=iris_labels)
     return predict_result_df
 
 
@@ -137,7 +137,7 @@ def iris_sets_process():
     print("---------------------Iris Data Sets(ID3)------------------------")
     iris_data_sets, iris_labels = utils.get_iris_data_set()
     iris_data_test_df, iris_data_train_df = utils.handle_data(iris_data_sets, iris_labels)
-    target_names = np.unique(iris_data_train_df.iloc[:, -1])
+    target_names = unique(iris_data_train_df.iloc[:, -1])
     # print(target_names)
     dt = DecisionTree()
     fit_begin_time = datetime.datetime.now()
@@ -160,7 +160,7 @@ def healthy_sets_process():
     print("---------------------Healthy Older People Sets(ID3)------------------------")
     healthy_data_sets, healthy_labels = utils.get_healthy_data_set()
     healthy_data_test_df, healthy_data_train_df = utils.handle_data(healthy_data_sets, healthy_labels)
-    target_names = np.unique(healthy_data_train_df.iloc[:, -1])
+    target_names = unique(healthy_data_train_df.iloc[:, -1])
     # print(target_names)
     dt = DecisionTree()
     fit_begin_time = datetime.datetime.now()
@@ -178,9 +178,9 @@ def autism_sets_process():
     print("---------------------Autism Adult Data Sets(ID3)------------------------")
     autism_data_sets, autism_labels = utils.get_autism_data_set()
     autism_data_test_df, autism_data_train_df = utils.handle_data(autism_data_sets, autism_labels)
-    autism_labels = np.array(autism_data_train_df.columns)
+    autism_labels = array(autism_data_train_df.columns)
     # print(autism_labels)
-    target_names = np.unique(autism_data_train_df.iloc[:, -1])
+    target_names = unique(autism_data_train_df.iloc[:, -1])
     # print(target_names)
     dt = DecisionTree()
     fit_begin_time = datetime.datetime.now()
