@@ -134,7 +134,7 @@ def predict_data(dt, iris_data_test_df, iris_labels):
 
 
 def iris_sets_process():
-    print("---------------------Iris Data Sets------------------------")
+    print("---------------------Iris Data Sets(ID3)------------------------")
     iris_data_sets, iris_labels = utils.get_iris_data_set()
     iris_data_test_df, iris_data_train_df = utils.handle_data(iris_data_sets, iris_labels)
     target_names = np.unique(iris_data_train_df.iloc[:, -1])
@@ -157,7 +157,7 @@ def iris_sets_process():
 
 
 def healthy_sets_process():
-    print("---------------------Healthy Older People Sets------------------------")
+    print("---------------------Healthy Older People Sets(ID3)------------------------")
     healthy_data_sets, healthy_labels = utils.get_healthy_data_set()
     healthy_data_test_df, healthy_data_train_df = utils.handle_data(healthy_data_sets, healthy_labels)
     target_names = np.unique(healthy_data_train_df.iloc[:, -1])
@@ -175,7 +175,7 @@ def healthy_sets_process():
 
 
 def autism_sets_process():
-    print("---------------------Autism Adult Data Sets------------------------")
+    print("---------------------Autism Adult Data Sets(ID3)------------------------")
     autism_data_sets, autism_labels = utils.get_autism_data_set()
     autism_data_test_df, autism_data_train_df = utils.handle_data(autism_data_sets, autism_labels)
     autism_labels = np.array(autism_data_train_df.columns)
@@ -195,7 +195,8 @@ def autism_sets_process():
     print(report)
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
+def dt_id3():
     iris_sets_process()
-    healthy_sets_process()
     autism_sets_process()
+    healthy_sets_process()

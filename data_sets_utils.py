@@ -89,7 +89,7 @@ def get_healthy_data_set():
     files_in_path2 = os.listdir(path_2)
     healthy_data_set = []
     for i in range(len(files_in_path1) - 1):
-    # for i in range(0):  # For Test
+    # for i in range(int((len(files_in_path1) - 1)/2)):  # For Test
         file_name = files_in_path1[i]
         gender = file_name[-1]
         with open(path_1 + "/" + file_name) as file:
@@ -102,7 +102,7 @@ def get_healthy_data_set():
                     line_array.append(obj)
                 healthy_data_set.append(line_array)
     for i in range(len(files_in_path2) - 1):
-    # for i in range(1):  # For Test
+    # for i in range(int((len(files_in_path2) - 1)/2)):  # For Test
         file_name = files_in_path2[i]
         gender = file_name[-1]
         with open(path_2 + "/" + file_name) as file:
@@ -122,7 +122,7 @@ def get_healthy_data_set():
 
 
 def get_autism_data_set():
-    path = "Autism-Adult-Data Plus Description File/Autism-Adult-Data.arff"
+    path = "Autism-Adult-Data_Plus_Description_File/Autism-Adult-Data.arff"
     autism_data_set_lines = []
     autism_data_set = []
     autism_data_attr = []
@@ -149,9 +149,6 @@ def get_autism_data_set():
     # print(len(autism_data_set))
     # print(autism_data_set)
     return autism_data_set, autism_data_attr
-
-
-
 
 
 def generate_report(true_df, pred_df, target_names):
