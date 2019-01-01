@@ -2,6 +2,7 @@ from numpy import array, unique, append
 from pandas import DataFrame
 import data_sets_utils as utils
 import datetime
+import decision_tree_sklearn as cart
 
 
 class Node:
@@ -245,4 +246,5 @@ def autism_sets_process():
 def dt_cart():
     iris_sets_process()
     autism_sets_process()
-    healthy_sets_process()
+    # healthy_sets_process()
+    cart.dt_sklearn_cart()

@@ -9,3 +9,5 @@ if __name__ == '__main__':
     c45.dt_c45()
     print("******************Classification CART Algorithm******************")
     cart.dt_cart()
+    str_ = input("Input any characters to exit: ")
+    print(str_)

@@ -71,6 +71,10 @@ def get_healthy_data_set():
     # for i in range(int((len(files_in_path1) - 1)/2)):  # For Test
         file_name = files_in_path1[i]
         gender = file_name[-1]
+        if gender == "M" or "m":
+            gender = 0
+        elif gender == "F" or "f":
+            gender = 1
         with open(path_1 + "/" + file_name) as file:
             data = file.readlines()
             for line in data:
@@ -84,6 +88,10 @@ def get_healthy_data_set():
     # for i in range(int((len(files_in_path2) - 1)/2)):  # For Test
         file_name = files_in_path2[i]
         gender = file_name[-1]
+        if gender == "M" or "m":
+            gender = 0
+        elif gender == "F" or "f":
+            gender = 1
         with open(path_2 + "/" + file_name) as file:
             data = file.readlines()
             for line in data:
